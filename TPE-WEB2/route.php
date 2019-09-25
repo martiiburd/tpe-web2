@@ -12,7 +12,8 @@
             $controller = new ControllerAdministrador(); 
             $controller-> mostrarCategorias();
             break;
-
+        case 'productos': //lleva a los productos, muestra nombre de la cat, detalle, y los productos
+        
         default:
             echo "<h1>Error 404 - Page not found </h1>";
         break;
