@@ -11,9 +11,9 @@
         case 'inicio':   //lleva al inicio de la pagina y genera el mostrar las categorias//
             $controller = new ControllerAdministrador(); 
             $controller-> mostrarCategorias();
-            break;
+        break;
         case 'productos': //lleva a los productos, muestra nombre de la cat, detalle, y los productos
-        
+        break;
         default:
             echo "<h1>Error 404 - Page not found </h1>";
         break;
