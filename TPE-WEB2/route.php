@@ -1,5 +1,5 @@
 <?php
-    require_once("controllers/controllerAdmin.php");
+    require_once("controllers/controllerUsuario.php");
 
     if($_GET['action'] == '')
         $_GET['action'] = 'inicio';
@@ -9,10 +9,12 @@
 
     switch ($partesURL[0]) {
         case 'inicio':   //lleva al inicio de la pagina y genera el mostrar las categorias//
-            $controller = new ControllerAdministrador(); 
+            $controller = new ControllerUsuario(); 
             $controller-> mostrarCategorias();
         break;
         case 'productos': //lleva a los productos, muestra nombre de la cat, detalle, y los productos
+            $controller = new ControllerUsuario();
+            $controller-> mostrarProducto();
         break;
         default:
             echo "<h1>Error 404 - Page not found </h1>";
