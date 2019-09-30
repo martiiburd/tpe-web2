@@ -20,8 +20,13 @@ class ControllerUsuario{
         $this->viewCat->mostrarCategorias($categorias);
 
     }
-    public function mostrarProducto(){
-        $productos= $this->modelProd->obtenerProductos();
-        $this->viewProd->mostrarProductos($productos);
+    public function mostrarProducto($idProducto){
+        $productos = $this->modelProd->obtenerProductos($idProducto);
+
+        if ($productos){
+            $this->viewProd->mostrarProductos($productos);
+        }
+        
+        
     }
 }

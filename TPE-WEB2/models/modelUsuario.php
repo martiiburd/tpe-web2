@@ -13,9 +13,9 @@ class modelUsuario{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function obtenerProductos($id_categoria_fk){
-        $query = $this->db->prepare("SELECT * FROM `producto` WHERE `id_categoria_fk`= ?");
-        $query-> execute(array($id_categoria_fk));
+    public function obtenerProductos($idProducto){
+        $query = $this->db->prepare('SELECT * FROM `producto` WHERE `id_categoria_fk`= ?');
+        $query-> execute(array($idProducto));
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

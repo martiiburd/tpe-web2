@@ -10,14 +10,12 @@
                 
             echo "</ul>";
         }
-        public function mostrarProductos(){
-            // echo "<ul>";
-            //     // if($productos -> $categorias){ 
-            //     //  foreach($id_categoria as $producto){
-            //          echo "<li>" . $producto->producto . ' ' . '$'. $producto->precio . "</li>";
-            //      }   
-            //     }
-            // echo "</ul>";
-        var_dump($);
+        public function mostrarProductos($productos){
+            echo "<ul>";
+                foreach($productos as $producto){
+                    echo "<li>" . $producto->producto . ' ' . '$'. $producto->precio . "</li>";
+                }   
+            echo "</ul>";
+        
         }
 }

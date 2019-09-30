@@ -14,7 +14,7 @@
         break;
         case 'productos': //lleva a los productos, muestra nombre de la cat, detalle, y los productos
             $controller = new ControllerUsuario();
-            $controller-> mostrarProducto();
+            $controller-> mostrarProducto($partesURL[1]);
         break;
         default:
             echo "<h1>Error 404 - Page not found </h1>";
