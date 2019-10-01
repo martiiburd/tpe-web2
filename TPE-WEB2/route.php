@@ -1,23 +1,20 @@
 <?php
-    require_once("controllers/controllerUsuario.php");
+    require_once("controllers/controller.php");
+    require_once("Router.php");
+     // CONSTANTES PARA RUTEO
+    define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+    define("LOGIN", BASE_URL . 'login');
+    define("INICIO", BASE_URL . 'inicio');
+ 
+    $r = new Router();
 
-    if($_GET['action'] == '')
-        $_GET['action'] = 'inicio';
+    $r->addRoute('inicio', 'GET', 'Controller', 'mostrarCategorias'); //lleva al inicio de la pagina y genera el mostrar las categorias//
+    $r->addRoute('productos/:ID', 'GET', 'Controller', 'mostrarProducto'); //lleva a los productos, muestra nombre de la cat, detalle, y los productos
+    $r->addRoute('agregarCategoria', 'POST', 'Controller', 'agregarCategoria'); //lleva al form para agregar una categoria
 
-        
-    $partesURL=explode('/', $_GET['action']);
-
-    switch ($partesURL[0]) {
-        case 'inicio':   //lleva al inicio de la pagina y genera el mostrar las categorias//
-            $controller = new ControllerUsuario(); 
-            $controller-> mostrarCategorias();
-        break;
-        case 'productos': //lleva a los productos, muestra nombre de la cat, detalle, y los productos
-            $controller = new ControllerUsuario();
-            $controller-> mostrarProducto($partesURL[1]);
-        break;
-        default:
-            echo "<h1>Error 404 - Page not found </h1>";
-        break;
-    }
     
+    //ruta por defecto
+    $r->setDefaultRoute('Controller', 'mostrarCategorias');
+
+    //run(magia)
+    $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
