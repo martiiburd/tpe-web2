@@ -11,7 +11,7 @@
         }
         
         public function mostrarProductos($productos){
-            $this->smarty->assing('productos', $productos);
+            $this->smarty->assign('productos', $productos);
             $this->smarty->display('templates/viewProductos.tpl');
           
         }
