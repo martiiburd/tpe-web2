@@ -30,4 +30,8 @@ class Controller{
         
     
     }
+    public function mostrarTodosLosProductos(){
+        $productos= $this->modelProd->verProductos();
+        $this->viewProd->mostrarTodosLosProductos($productos);
+    }
 }

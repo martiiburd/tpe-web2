@@ -15,5 +15,10 @@
             $this->smarty->display('templates/viewProductos.tpl');
           
         }
+
+        public function mostrarTodosLosProductos($productos){
+            $this->smarty->assign('productos', $productos);
+            $this->smarty->display('templates/viewTodosLosProd.tpl');
+        }
         
     }

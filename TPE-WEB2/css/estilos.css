@@ -1,5 +1,8 @@
-.barraNav{
-    display: inline-flexbox;
-    background-color: 5426AC;
-    text-decoration-color: coral;
+.logo{
+    height: 15%;
+    width: 15%;
+    margin: 0%;
+}
+.navbar{
+    background-color: black!important;
 }

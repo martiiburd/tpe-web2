@@ -19,4 +19,10 @@ class model{
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+    public function verProductos(){
+        $query = $this->db->prepare('SELECT * FROM producto');
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    } 
 }
