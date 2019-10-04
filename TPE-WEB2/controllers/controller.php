@@ -31,7 +31,13 @@ class Controller{
     
     }
     public function mostrarTodosLosProductos(){
-        $productos= $this->modelProd->verProductos();
+        $productos = $this->modelProd->verProductos();
         $this->viewProd->mostrarTodosLosProductos($productos);
+    }
+
+    public function obtenerOfertas(){
+        $productos = $this->modelProd->obtenerOfertas();
+        $this->viewProd-> mostrarOfertas($productos);
+    
     }
 }

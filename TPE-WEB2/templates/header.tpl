@@ -20,6 +20,9 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="verProductos">Productos</a>
         </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="ofertas">Ofertas</a>
+        </div>
         {if isset($userName)}
          <div class="navbar-nav ml-auto">
             <span class="navbar-text">{$userName}</span>
