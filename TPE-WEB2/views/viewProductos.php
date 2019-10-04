@@ -26,4 +26,9 @@
             $this->smarty->display('templates/viewOfertas.tpl');
         }
         
+        public function error($msgError){
+            $this->smarty->assign('msgError', $msgError);
+            $this->smarty->display('templates/viewError.tpl');
+
+        }
     }

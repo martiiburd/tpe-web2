@@ -15,6 +15,11 @@
             $this->smarty->display('templates/viewCategorias.tpl');
             
         }
+        public function error($msgError){
+            $this->smarty->assign('msgError', $msgError);
+            $this->smarty->display('templates/viewError.tpl');
+
+        }
         
     }
 

@@ -18,7 +18,12 @@ class Controller{
 
     public function mostrarCategorias(){
         $categorias= $this->modelCat->obtenerCategorias();
-        $this->viewCat->mostrarCategorias($categorias);
+        if($categorias){
+            $this->viewCat->mostrarCategorias($categorias);
+        }
+        else{
+            $this->viewCat->error('No existen categorias!');
+        }
 
     }
     public function mostrarProducto($params=null){
@@ -27,17 +32,32 @@ class Controller{
         if ($productos){
             $this->viewProd->mostrarProductos($productos);
         }
+        else{
+            $this->viewProd->error('No hay productos para mostrar!');
+        }
         
     
     }
     public function mostrarTodosLosProductos(){
         $productos = $this->modelProd->verProductos();
-        $this->viewProd->mostrarTodosLosProductos($productos);
+        if($productos){
+            $this->viewProd->mostrarTodosLosProductos($productos);
+        }
+        else{
+            $this->viewProd->error('No hay productos para mostrar!');
+        }
+        
     }
 
     public function obtenerOfertas(){
         $productos = $this->modelProd->obtenerOfertas();
-        $this->viewProd-> mostrarOfertas($productos);
+        if($productos){
+            $this->viewProd-> mostrarOfertas($productos);
+        }
+        else{
+            $this->viewProd->error('No hay ofertas disponibles!');
+        }
+        
     
     }
 }

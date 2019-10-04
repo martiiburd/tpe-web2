@@ -23,6 +23,9 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="ofertas">Ofertas</a>
         </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
+        </div>
         {if isset($userName)}
          <div class="navbar-nav ml-auto">
             <span class="navbar-text">{$userName}</span>
