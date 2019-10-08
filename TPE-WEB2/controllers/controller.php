@@ -8,12 +8,14 @@ class Controller{
     private $modelProd;
     private $viewCat;
     private $viewProd;
+    private $authHelper;
 
     public function __construct(){              //constructores 
         $this->modelCat = new model();
         $this->modelProd = new model();
         $this->viewCat = new viewCategorias();
         $this->viewProd = new viewProductos();
+        $this->authHelper = new AuthHelper();
     }
 
     public function mostrarCategorias(){
@@ -26,7 +28,7 @@ class Controller{
         }
 
     }
-    public function mostrarProducto($params=null){
+    public function mostrarProducto($params=null) {
         $idProducto = $params[':ID'];
         $productos = $this->modelProd->obtenerProductos($idProducto);
         if ($productos){
@@ -39,6 +41,9 @@ class Controller{
     
     }
     public function mostrarTodosLosProductos(){
+
+        //$this->authHelper->chequearUsuarioRegistrado();
+
         $productos = $this->modelProd->verProductos();
         if($productos){
             $this->viewProd->mostrarTodosLosProductos($productos);

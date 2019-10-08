@@ -1,5 +1,6 @@
 <?php
     require_once("controllers/controller.php");
+    require_once("controllers/loginController.php");
     require_once("Router.php");
      // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -13,7 +14,9 @@
     $r->addRoute('agregarCategoria', 'POST', 'Controller', 'agregarCategoria'); //lleva al form para agregar una categoria
     $r->addRoute('verProductos', 'GET', 'Controller', 'mostrarTodosLosProductos');
     $r->addRoute('ofertas','GET', 'Controller', 'obtenerOfertas'); //le pide a la bbdd a traves de Join los menores precios y los muestra
-    
+    $r->addRoute('login', 'GET', 'LoginController','iniciarSesion');
+    $r->addRoute('verify', 'POST', 'LoginController','verificarUsuario');
+    $r->addRoute('logout', 'GET', 'LoginController','logout');
     //ruta por defecto
     $r->setDefaultRoute('Controller', 'mostrarCategorias');
 

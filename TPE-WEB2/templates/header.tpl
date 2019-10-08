@@ -23,12 +23,14 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="ofertas">Ofertas</a>
         </div>
+        {if !isset($username)}
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
         </div>
-        {if isset($userName)}
+        {/if}
+        {if isset($username)}
          <div class="navbar-nav ml-auto">
-            <span class="navbar-text">{$userName}</span>
+            <span class="navbar-text">{$username}</span>
             <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
         </div>
         {/if}
