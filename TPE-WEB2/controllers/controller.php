@@ -42,8 +42,6 @@ class Controller{
     }
     public function mostrarTodosLosProductos(){
 
-        //$this->authHelper->chequearUsuarioRegistrado();
-
         $productos = $this->modelProd->verProductos();
         if($productos){
             $this->viewProd->mostrarTodosLosProductos($productos);
@@ -63,6 +61,54 @@ class Controller{
             $this->viewProd->error('No hay ofertas disponibles!');
         }
         
-    
     }
+
+    public function eliminar($params = null){
+        $id = $params[':ID'];
+        $this->modelCat->eliminarCat($id);
+        $this->modelProd->eliminarProd($id);
+        header("Location: " . INICIO);
+
+    }
+
+    public function agregarCategoria(){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera
+        $nombre = $_POST['nombre'];
+        $descripcion=$_POST['descripcion'];
+
+        if(!empty($nombre) && !empty($descripcion)){
+            // $agregar = true;                 preguntar como hacer para no agregar categorias con el mismo nombre 
+            // if($nombre == $categoria->nombre)
+
+            $this->modelCat->guardarCat($nombre, $descripcion);
+            header('Location: ' . INICIO);
+        }
+        else {
+            $this->viewCat->error("Faltan datos obligatorios");
+        }
+    }
+
+    public function agregarproducto(){
+        
+        if(session_status() !=PHP_SESSION_ACTIVE){
+            $producto = $_POST['producto'];
+            $graducion=$_POST['graduacion'];
+            $precio=$_POST['precio'];
+    
+            if(!empty($producto) && !empty($graduacion) && !empty($precio)){
+                // $agregar = true;                 preguntar como hacer para no agregar productos con el mismo nombre 
+    
+                $this->modelProd->guardarProd($producto, $graduacion, $precio);
+                header('Location: ' . INICIO);
+            }
+            else {
+                $this->viewProd->error("Faltan datos obligatorios");
+            }
+        }
+        else {
+            $this->authHelper->chequearUsuarioRegistrado(); //barrera
+        }
+        
+    }
+    
 }

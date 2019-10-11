@@ -6,8 +6,10 @@
         private $smarty;
         public function __construct() {
             $this->smarty = new Smarty();
+            $authHelper = new AuthHelper();
             $this->smarty->assign('titulo', 'Productos');
             $this->smarty->assign('basehref', BASE_URL);
+            $this->smarty->assign('username', $authHelper->obternerNombreUsuario());
         }
         
         public function mostrarProductos($productos){

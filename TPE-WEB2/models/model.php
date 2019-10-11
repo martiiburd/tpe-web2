@@ -33,4 +33,23 @@ class model{
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+    public function eliminarCat($id){
+        $query=$this->db->prepare('DELETE FROM categoria WHERE id_categoria = ?');
+        $query->execute([$id]);
+
+    }
+    public function eliminarProd($id){
+        $query=$this->db->prepare('DELETE FROM producto WHERE id_producto = ?');
+        $query->execute([$id]);
+    }
+
+    public function guardarProd($producto, $graduacion, $precio){
+       $query=$this->db->prepare('INSERT INTO producto(producto, graduacion, precio) VALUES(?,?,?)');
+       $query->execute([$producto, $graduacion, $precio]);
+    }
+
+    public function guardarCat($nombre, $descripcion){
+        $query=$this->db->prepare('INSERT INTO catergoria(nombre, descripcion) VALUES(?,?)');
+        $query->execute([$nombre, $descripcion]);
+     }
 }
