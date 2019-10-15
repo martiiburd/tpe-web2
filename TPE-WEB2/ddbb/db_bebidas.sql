@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2019 a las 19:13:02
+-- Tiempo de generación: 16-10-2019 a las 00:42:43
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.8
 
@@ -39,9 +39,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
-(1, 'Fermentados', 'La fermentación espontánea de cualquier líquido azucarado conduce a la obtención de una bebida fermentada.'),
-(2, 'Destilados', 'El proceso de destilación purifica el líquido y elimina los componentes diluyentes como el agua, con el fin de aumentar su proporción de contenido de alcohol.'),
-(3, 'Licores', 'Los licores son una bebida alcohólica que se produce mediante la mezcla, la maceración y/o la destilación de diferentes sustancias. Por lo general tienen sabor a hierbas o a frutas.');
+(1, 'Fermentado', 'La fermentación espontánea de cualquier líquido azucarado conduce a la obtención de una bebida fermentada.'),
+(5, 'Aguas', 'fea'),
+(8, 'Vinos', 'ñamñanm');
 
 -- --------------------------------------------------------
 
@@ -62,19 +62,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `producto`, `graduacion`, `precio`, `id_categoria_fk`) VALUES
-(1, 'Sidra', 8, 85, 1),
-(2, 'Vino', 14, 297, 1),
-(3, 'Fernet', 45, 440, 1),
-(4, 'Cerveza', 10, 90, 1),
-(5, 'Vermut', 20, 231, 1),
-(6, 'Vodka', 40, 180, 2),
-(7, 'Whisky', 60, 540, 2),
-(8, 'Tequila', 50, 943, 2),
-(9, 'Ron', 80, 2000, 2),
-(10, 'Ginebra', 45, 1780, 2),
-(11, 'Anís', 40, 863, 3),
-(12, 'Tía María', 31, 333, 3),
-(13, 'Blue Curacao', 35, 154, 3);
+(17, 'Ivess', 0, 40, 5),
+(19, 'Fernet', 47, 450, 1),
+(24, 'coca-cola', 0, 34, 5),
+(44, 'malbec', 45, 234, 8);
 
 -- --------------------------------------------------------
 
@@ -93,7 +84,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `contrasena`) VALUES
-(2, 'paucasado@admin.com', '$2y$10$CwxD.fUHWVOyS3jsEsFpmOqpBzNs0M3./gep8s4T8VulZV4tXc5Ou');
+(2, 'paucasado@admin.com', '$2y$10$CwxD.fUHWVOyS3jsEsFpmOqpBzNs0M3./gep8s4T8VulZV4tXc5Ou'),
+(3, 'martyburdy@admin.com', '$2y$10$vyMzWH80OMkPFGAbjW0Ek.KO9DrtBQRsisCoT5nWSVsWV14Ynrbbi');
 
 --
 -- Índices para tablas volcadas
@@ -126,17 +118,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
