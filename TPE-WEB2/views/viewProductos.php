@@ -12,8 +12,9 @@
             $this->smarty->assign('username', $authHelper->obternerNombreUsuario());
         }
         
-        public function mostrarProductos($productos){
+        public function mostrarProductos($productos, $categorias){
             $this->smarty->assign('productos', $productos);
+            $this->smarty->assign('categorias', $categorias);
             $this->smarty->display('templates/viewProductos.tpl');
           
         }
@@ -34,8 +35,16 @@
 
         }
 
-        public function mostrarProdModificar($prod){
-            $this->smarty->assign('productos', $prod);
+        public function mostrarProdModificar($prod,$categorias){
+            $this->smarty->assign('producto', $prod);
+            $this->smarty->assign('categorias', $categorias);
             $this->smarty->display('templates/viewModificarProd.tpl');
+        }
+
+        public function agregarProd($idProducto,$categorias){
+            $this->smarty->assign('productos', $idProducto);
+            $this->smarty->assign('categorias', $categorias);
+            $this->smarty->display('templates/viewAgregarP.tpl');
+
         }
     }

@@ -3,7 +3,7 @@
 
 {foreach $categorias as $categoria}
     <h4>{$categoria->nombre}</h4><a href="productos/{$categoria->id_categoria}">Ver Productos</a> 
-    {if isset($username)}<a href="eliminar/{$categoria->id_categoria}">Eliminar</a>
+    {if isset($username)}<a href="eliminarCategoria/{$categoria->id_categoria}">Eliminar</a>
     <a href="editarCategoria/{$categoria->id_categoria}">Editar</a>{/if}
     <p>{$categoria->descripcion}</p>
 {/foreach}

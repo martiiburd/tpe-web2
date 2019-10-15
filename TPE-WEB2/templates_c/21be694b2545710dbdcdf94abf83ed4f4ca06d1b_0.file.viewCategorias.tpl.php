@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-15 17:41:50
+/* Smarty version 3.1.33, created on 2019-10-16 00:12:41
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\viewCategorias.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5da5e8be8864b2_83562754',
+  'unifunc' => 'content_5da64459b24342_61760850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '21be694b2545710dbdcdf94abf83ed4f4ca06d1b' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\viewCategorias.tpl',
-      1 => 1571153967,
+      1 => 1571177556,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5da5e8be8864b2_83562754 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5da64459b24342_61760850 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <h1>Categorias:</h1>
@@ -35,7 +35,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
     <h4><?php echo $_smarty_tpl->tpl_vars['categoria']->value->nombre;?>
 </h4><a href="productos/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_categoria;?>
 ">Ver Productos</a> 
-    <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?><a href="eliminar/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_categoria;?>
+    <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?><a href="eliminarCategoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_categoria;?>
 ">Eliminar</a>
     <a href="editarCategoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_categoria;?>
 ">Editar</a><?php }?>

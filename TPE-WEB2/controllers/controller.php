@@ -34,11 +34,13 @@ class Controller{
     public function mostrarProducto($params=null) {
         $idProducto = $params[':ID'];
         $productos = $this->modelProd->obtenerProductos($idProducto);
+        $categorias=$this->modelCat->obtenerCategorias();
         if ($productos){
-            $this->viewProd->mostrarProductos($productos);
+            $this->viewProd->mostrarProductos($productos, $categorias);
         }
         else{
             $this->viewProd->error('No hay productos para mostrar!');
+            $this->viewProd->agregarProd($idProducto,$categorias);
         }
         
     
@@ -66,67 +68,72 @@ class Controller{
         
     }
 
-    public function eliminar($params = null){
+    public function eliminarProducto($params = null){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera   
         $id = $params[':ID'];
-        $this->modelCat->eliminarCat($id);
         $this->modelProd->eliminarProd($id);
-        header("Location: " . INICIO);
+        header("Location: " . INICIO);  
+    }
 
+    public function eliminarCategoria($params = null){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera   
+        $id = $params[':ID'];
+        $productos=$this->modelProd->obtenerProductos($id); 
+        if($productos){
+            $this->viewCat->error("Para eliminar la categoria deseada se deben borrar los productos que hay en ella");
+        }
+        else{
+            $this->modelCat->eliminarCat($id); 
+            header("Location: " . INICIO);    
+        }
     }
 
     public function agregarCategoria(){
-        
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera
         $nombre = $_POST['nombre'];
         $descripcion=$_POST['descripcion'];
-
-        
-        // preguntar como hacer para no agregar categorias con el mismo nombre 
-        // if($nombre == $categoria->nombre)
-
-            // $this->authHelper->chequearUsuarioRegistrado(); //barrera
+        if(isset($nombre) && isset($descripcion)){ 
             $this->modelCat->guardarCat($nombre, $descripcion);
             header('Location: ' . INICIO);
+        }
+        else{
+            $this->viewCat->error("Faltan datos obligatorios");
+        }
         
-        // else {
-            // $this->viewCat->error("Faltan datos obligatorios");
-        // }
+        
     }
 
     public function agregarProducto(){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera
         $producto = $_POST['producto'];
         $graduacion=$_POST['graduacion'];
         $precio=$_POST['precio'];
         $categoria=$_POST['categoria'];
-            // $id_cat=mostrarProducto($id);        COMO AGREGAR PROD DEPENDE DEL ID DE CATEGORIA
-            var_dump($producto,$graduacion,$precio);
+        if(isset($producto) && isset($graduacion) && isset($precio)){  
+            $this->modelProd->guardarProd($producto, $graduacion, $precio,$categoria);
+            header('Location: ' . INICIO);
+        }
+        else {                
+            $this->viewProd->error("Faltan datos obligatorios");
+        }
 
-            if(isset($producto) && isset($graduacion) && isset($precio)){
-                
-                // $agregar = true;                 preguntar como hacer para no agregar productos con el mismo nombre
-                $this->modelProd->guardarProd($producto, $graduacion, $precio,$categoria);
-                header('Location: ' . INICIO);
-            }
-            else {
-                //como hacemos para que ademas del error muestre el form
-                $this->viewProd->error("Faltan datos obligatorios");
-                
-            }
-        
-        
     }
 
     public function traerProductoModificar($params = null){
         $id_prod= $params[':ID'];
         $producto=$this->modelProd->descripcionProd($id_prod);
-        $this->viewProd->mostrarProdModificar($producto);
+        $categorias=$this->modelCat->obtenerCategorias();
+        $this->viewProd->mostrarProdModificar($producto, $categorias);
     }
 
     public function modificarProducto(){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera
         $id_prod=$_POST['id_prod'];
         $prod = $_POST['prod'];
         $grad=$_POST['grad'];
         $prec=$_POST['prec'];
         $categ=$_POST['categ'];
+        
         
         if(isset($prod) && isset($grad) && isset($prec) && isset($categ)){
             $this->modelProd->modificarProd($prod,$grad,$prec,$categ,$id_prod);
@@ -141,10 +148,10 @@ class Controller{
     public function traerCategoriaModificar($params = null){
         $id_cat= $params[':ID'];
         $categ=$this->modelCat->descripcionCat($id_cat);
-        var_dump($categ); die();
         $this->viewCat->mostrarCatModificar($categ);
     }
     public function modificarCategoria(){
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera
         $id_cat=$_POST['id_cat'];
         $nomb = $_POST['nomb'];
         $descri=$_POST['descri'];

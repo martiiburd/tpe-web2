@@ -54,31 +54,30 @@ class model{
     }
 
     public function descripcionProd($id_prod){
-        $query = $this->db->prepare('SELECT producto.producto, producto.precio, producto.graduacion, categoria.nombre FROM producto 
+        $query = $this->db->prepare('SELECT producto.producto, producto.precio, producto.graduacion, producto.id_producto, categoria.nombre FROM producto 
         JOIN categoria ON producto.id_categoria_fk=categoria.id_categoria WHERE `id_producto`= ?');
         $query-> execute(array($id_prod));
 
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
     public function modificarProd($prod,$grad,$prec,$categ,$id_prod){
         $query = $this->db->prepare('UPDATE producto SET producto=?,graduacion=?,precio=?,id_categoria_fk=? WHERE id_producto=?');
-        $query-> execute(array($id_prod));
+        $query-> execute(array($prod,$grad,$prec,$categ,$id_prod));
 
-        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function descripcionCat($id_cat){
-        $query = $this->db->prepare('SELECT nombre, descripcion FROM categoria WHERE id_categoria= ?');
+        $query = $this->db->prepare('SELECT id_categoria, nombre, descripcion FROM categoria WHERE id_categoria= ?');
         $query-> execute(array($id_cat));
 
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
     public function modificarCat($nomb,$descri,$id_cat){
         $query = $this->db->prepare('UPDATE categoria SET nombre=?,descripcion=? WHERE id_categoria=?');
-        $query-> execute(array($id_cat));
+        $query-> execute(array($nomb,$descri,$id_cat));
 
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        
     }
 }

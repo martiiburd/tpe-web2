@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-15 03:13:15
+/* Smarty version 3.1.33, created on 2019-10-16 00:06:02
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\viewProductos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5da51d2b698384_20005505',
+  'unifunc' => 'content_5da642cac18b90_82530102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd99656eb59b34d2bb35b986e8d0a893484ec2e2a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\viewProductos.tpl',
-      1 => 1571101991,
+      1 => 1571177155,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5da51d2b698384_20005505 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5da642cac18b90_82530102 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -35,7 +35,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['producto']->value) {
     <li><h4><?php echo $_smarty_tpl->tpl_vars['producto']->value->producto;?>
 </h4> $<?php echo $_smarty_tpl->tpl_vars['producto']->value->precio;
 if (isset($_smarty_tpl->tpl_vars['username']->value)) {?> 
-    <a href="eliminar/<?php echo $_smarty_tpl->tpl_vars['producto']->value->id_producto;?>
+    <a href="eliminarProducto/<?php echo $_smarty_tpl->tpl_vars['producto']->value->id_producto;?>
 ">Eliminar</a> 
     <a href="editarProducto/<?php echo $_smarty_tpl->tpl_vars['producto']->value->id_producto;?>
 ">Editar</a><?php }?></li>
@@ -69,11 +69,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
             <div class="form-group">
                 <select name="categoria" >
-                    <option value="1">Fermentados</option>
-                    <option value="2">Destilados</option>
-                    <option value="3">Licores</option>
-                    <option value="6">Aguas</option>
-                    <option value="7">Vinos</option>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categorias']->value, 'categoria');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
+?>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_categoria;?>
+"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->nombre;?>
+</option>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </select>
             </div>
             
