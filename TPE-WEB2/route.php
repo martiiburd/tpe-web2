@@ -27,7 +27,7 @@
     $r->addRoute('editarCategoria', 'POST', 'Controller', 'modificarCategoria');
 
     //ruta por defecto
-    //$r->setDefaultRoute('Controller', 'mostrarCategorias');
+    $r->setDefaultRoute('Controller', 'mostrarCategorias');
 
     //run(magia)
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
