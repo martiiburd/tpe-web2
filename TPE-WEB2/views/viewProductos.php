@@ -33,4 +33,9 @@
             $this->smarty->display('templates/viewError.tpl');
 
         }
+
+        public function mostrarProdModificar($prod){
+            $this->smarty->assign('productos', $prod);
+            $this->smarty->display('templates/viewModificarProd.tpl');
+        }
     }

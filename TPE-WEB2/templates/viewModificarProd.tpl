@@ -1,37 +1,43 @@
 {include file='header.tpl'}
 
-<ul>
 {foreach $productos as $producto}
-    <li><h4>{$producto->producto}</h4> ${$producto->precio}{if isset($username)} 
-    <a href="eliminar/{$producto->id_producto}">Eliminar</a> 
-    <a href="editarProducto/{$producto->id_producto}">Editar</a>{/if}</li>
-
+    <h5> Nombre: {$producto->producto}</h5>
+    <p>Precio: ${$producto->precio} </p>
+    <p>Graduacion Alcoholica: {$producto->graduacion}</p>
+    <p>Categoria a la que pertenece: {$producto->nombre}</p>
 {/foreach}
-</ul>
+
 {if isset($username)}
     <div class="container">
-        <form action="agregarProducto" method="POST">
-
+        <form action="editarProducto" method="POST">
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label>ID del Producto: </label>
+                        <input name="id_prod" type="number" class="form-control">
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
                         <label>Nombre del Producto: </label>
-                        <input name="producto" type="text" class="form-control">
+                        <input name="prod" type="text" class="form-control">
                     </div>
                 </div>
             </div>
         
             <div class="form-group">
                 <label>Graduacion Alcoholica</label>
-                <input name="graduacion" type= "number" class="form-control">
+                <input name="grad" type= "number" class="form-control">
             </div>
 
             <div class="form-group">
                 <label>Precio del Producto</label>
-                <input name="precio" type= "number" class="form-control">
+                <input name="prec" type= "number" class="form-control">
             </div>
             <div class="form-group">
-                <select name="categoria" >
+                <select name="categ" >
                     <option value="1">Fermentados</option>
                     <option value="2">Destilados</option>
                     <option value="3">Licores</option>
@@ -40,7 +46,7 @@
                 </select>
             </div>
             
-            <button type="submit" class="btn btn-primary">Guardar Producto</button>
+            <button type="submit" class="btn btn-primary">Modificar</button>
 
             </form>
 

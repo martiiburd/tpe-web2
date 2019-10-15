@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-10-05 01:11:49
+/* Smarty version 3.1.33, created on 2019-10-14 01:49:38
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d97d1b55fc528_37037124',
+  'unifunc' => 'content_5da3b81295cc28_89714960',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '524923f0821e62d4f6aa951c0c104436729fbd34' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\header.tpl',
-      1 => 1570230706,
+      1 => 1570564403,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d97d1b55fc528_37037124 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5da3b81295cc28_89714960 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,12 +48,14 @@ function content_5d97d1b55fc528_37037124 (Smarty_Internal_Template $_smarty_tpl)
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="ofertas">Ofertas</a>
         </div>
+        <?php if (!isset($_smarty_tpl->tpl_vars['username']->value)) {?>
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
         </div>
-        <?php if (isset($_smarty_tpl->tpl_vars['userName']->value)) {?>
+        <?php }?>
+        <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?>
          <div class="navbar-nav ml-auto">
-            <span class="navbar-text"><?php echo $_smarty_tpl->tpl_vars['userName']->value;?>
+            <span class="navbar-text"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </span>
             <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
         </div>

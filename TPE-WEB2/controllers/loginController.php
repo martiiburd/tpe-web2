@@ -20,12 +20,10 @@ class LoginController{
     public function verificarUsuario(){
         $nombre= $_POST['nombre'];
         $contrasena= $_POST['contraseña'];
-
         $usuario= $this->model->recibirNombreUsuario($nombre);
         if(!empty($usuario) && password_verify($contrasena, $usuario->contrasena)){
             $this->authHelper->login($usuario);
-            header('Location: inicio');
-            var_dump($usuario); die();
+            header('Location: ' . INICIO);
 
         }
         else{

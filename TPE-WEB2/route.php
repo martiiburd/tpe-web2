@@ -20,6 +20,11 @@
     $r->addRoute('eliminar/:ID', 'GET', 'Controller', 'eliminar');
     $r->addRoute('agregarCategoria', 'POST', 'Controller', 'agregarCategoria'); //lleva al form para agregar una categoria
     $r->addRoute('agregarProducto', 'POST', 'Controller', 'agregarProducto');
+    $r->addRoute('editarProducto/:ID', 'GET', 'Controller', 'traerProductoModificar');
+    $r->addRoute('editarProducto', 'POST', 'Controller', 'modificarProducto');
+    $r->addRoute('editarCategaria/:ID', 'GET', 'Controller', 'traerCategoriaModificar');
+    $r->addRoute('editarCategoria', 'POST', 'Controller', 'modificarCategoria');
+
     //ruta por defecto
     $r->setDefaultRoute('Controller', 'mostrarCategorias');
 
