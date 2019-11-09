@@ -19,8 +19,9 @@
           
         }
 
-        public function mostrarTodosLosProductos($productos){
+        public function mostrarTodosLosProductos($productos, $categorias){
             $this->smarty->assign('productos', $productos);
+            $this->smarty->assign('categorias', $categorias);
             $this->smarty->display('templates/viewTodosLosProd.tpl');
         }
 
@@ -46,5 +47,9 @@
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->display('templates/viewAgregarP.tpl');
 
+        }
+        public function mostrarFoto($imagenes){
+            $this->smarty->assign('imagenes', $imagenes);
+            $this->smarty->display('templates/viewImagen.tpl');
         }
     }

@@ -1,7 +1,7 @@
 
 {if isset($username)}
     <div class="container">
-        <form action="agregarProducto" method="POST">
+        <form action="agregarProducto" method="POST" enctype="multipart/form-data">
 
             <div class="row">
                 <div class="col-9">
@@ -28,6 +28,7 @@
                     {/foreach}
                 </select>
             </div>
+            <input type="file" name="imagesToUpload" id="imagesToUpload" multiple = " " >
             
             <button type="submit" class="btn btn-primary">Guardar Producto</button>
 
