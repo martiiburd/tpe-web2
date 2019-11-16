@@ -23,21 +23,9 @@ class modelProd{
     }
 
     public function guardarProd($producto, $graduacion, $precio, $categoria){
-       $query=$this->db->prepare('INSERT INTO producto(producto, graduacion, precio, id_categoria_fk) VALUES (?,?,?,?)');
-       $query->execute([$producto, $graduacion, $precio, $categoria]);
-       return $this->db->lastInsertId();
-    }
-    public function guardarImagen($productoId, $img){
-        $ruta = "img/".uniqid().".png";
-        move_uploaded_file($img, $ruta);
-        $query=$this->db->prepare('INSERT INTO  imagen(ruta_img, id_producto_fk) VALUES (?,?)');
-        $query->execute(array($ruta, $productoId));
-        // var_dump($query->errorInfo());
-    }
-    public function traerImgProd($id_prod){
-        $query= $this->db->prepare('SELECT * FROM imagen WHERE id_producto_fk=?');
-        $query->execute(array($id_prod));
-        return $query->fetchAll(PDO::FETCH_OBJ);
+        $query=$this->db->prepare('INSERT INTO producto(producto, graduacion, precio, id_categoria_fk) VALUES (?,?,?,?)');
+        $query->execute([$producto, $graduacion, $precio, $categoria]);
+        return $this->db->lastInsertId();
     }
     
     public function descripcionProd($id_prod){
@@ -45,17 +33,14 @@ class modelProd{
         JOIN categoria ON producto.id_categoria_fk=categoria.id_categoria WHERE `id_producto`= ?');
         $query-> execute(array($id_prod));
         return $query->fetch(PDO::FETCH_OBJ);
+
     }
 
     public function modificarProd($prod,$grad,$prec,$categ,$id_prod){
         $query = $this->db->prepare('UPDATE producto SET producto=?,graduacion=?,precio=?,id_categoria_fk=? WHERE id_producto=?');
         $query-> execute(array($prod,$grad,$prec,$categ,$id_prod));
-
+        
     }
-    private function moverImagen($imagen){
-        $target = 'img/' . uniqid() . '.jpg';
-        move_uploaded_file($imagen, $target);
-        return $target;
-    }
+    
 
 }

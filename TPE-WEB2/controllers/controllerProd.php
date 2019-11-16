@@ -1,11 +1,13 @@
 <?php
 include_once('models/modelCat.php');
 include_once('models/modelProd.php'); 
+include_once('models/modelImg.php');
 include_once('views/viewProductos.php');
 
 class ControllerProd{
     private $modelCat;
     private $modelProd;
+    private $modelImg;
     private $viewProd;
     private $authHelper;
     
@@ -15,6 +17,7 @@ class ControllerProd{
         $this->modelProd = new modelProd();
         $this->viewProd = new viewProductos();
         $this->authHelper = new AuthHelper();
+        $this->modelImg= new modelImg();
        
     }
 
@@ -24,6 +27,7 @@ class ControllerProd{
         $categorias=$this->modelCat->obtenerCategorias();
         if ($productos){
             $this->viewProd->mostrarProductos($productos, $categorias);
+
         }
         else{
             $this->viewProd->error('No hay productos para mostrar!');
@@ -68,26 +72,25 @@ class ControllerProd{
         $graduacion=$_POST['graduacion'];
         $precio=$_POST['precio'];
         $categoria=$_POST['categoria'];
-        $imagen=$_FILES['imagesToUpload']['tmp_name']; //guarda la img en la variable para pasar por parametro
+        $imagenes=$_FILES;//guarda las img en la variable para pasar por parametro
         if(isset($producto) && isset($graduacion) && isset($precio)){ 
-            if($_FILES['imagesToUpload']['type'] == "image/jpg" || $_FILES['imagesToUpload']['type'] == "image/jpeg" || $_FILES['imagesToUpload']['type'] == "image/png"){
-                $productoId = $this->modelProd->guardarProd($producto, $graduacion, $precio, $categoria);    
-                $this->modelProd->guardarImagen($productoId, $imagen); 
-                header('Location: ' . INICIO);
+            $productoId = $this->modelProd->guardarProd($producto, $graduacion, $precio, $categoria);
+            foreach($imagenes['imagesToUpload']['tmp_name'] as $key => $tmp_name){
+                if($_FILES['imagesToUpload']['type'][$key] == "image/jpg" || $_FILES['imagesToUpload']['type'][$key] == "image/jpeg" || $_FILES['imagesToUpload']['type'][$key] == "image/png") {
+                    $source=$tmp_name;
+                    $name = $_FILES['imagesToUpload']['name'][$key];
+                    $this->modelImg->guardarImagen($productoId, $name, $source); 
+                }
             }
-            else{
-                $this->modelProd->guardarProd($producto, $graduacion, $precio,$categoria);
-                // header('Location: ' . INICIO);
-            } 
         }
         else {                
             $this->viewProd->error("Faltan datos obligatorios");
         }
-
+        header('Location: '. INICIO);
     }
     public function mostrarImg($params= null){
         $id_prod= $params[':ID'];
-        $imagen=$this->modelProd->traerImgProd($id_prod);
+        $imagen=$this->modelImg->traerImgProd($id_prod);
         $this->viewProd->mostrarFoto($imagen);
 
     }
@@ -106,14 +109,30 @@ class ControllerProd{
         $grad=$_POST['grad'];
         $prec=$_POST['prec'];
         $categ=$_POST['categ'];
-        
-        
-        if(isset($prod) && isset($grad) && isset($prec) && isset($categ)){
+        $imagenes=$_FILES;        
+        if(isset($prod) && isset($grad) && isset($prec) && isset($categ)){  
             $this->modelProd->modificarProd($prod,$grad,$prec,$categ,$id_prod);
+            $hayimg=$this->modelImg->traerImgProd($id_prod);
+            if(isset ($hayimg)){
+                $this->modelImg->eliminarImgProd($id_prod);
+            }
+            foreach($imagenes['imagesToUpload']['tmp_name'] as $key => $tmp_name){
+                if($_FILES['imagesToUpload']['type'][$key] == "image/jpg" || $_FILES['imagesToUpload']['type'][$key] == "image/jpeg" || $_FILES['imagesToUpload']['type'][$key] == "image/png") {
+                    $source=$tmp_name;
+                    $name = $_FILES['imagesToUpload']['name'][$key];
+                    $this->modelImg->guardarImagen($id_prod, $name, $source); 
+                    
+                }
+            }
             header("Location: " .  INICIO);
         }
         else {
             $this->viewProd->error("Faltan datos obligatorios");
         }
+    }
+    public function eliminarImg($params= null){
+        $id_img= $params[':ID'];
+        $this->modelImg->eliminarImg($id_img);
+        header("Location: " .  INICIO);
     }
 }

@@ -7,7 +7,7 @@
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
     define("LOGIN", BASE_URL . 'login');
     define("INICIO", BASE_URL . 'inicio');
-    define("PRODUCTOS", BASE_URL . 'productos/:ID');
+    define("VERTODO", BASE_URL .'verProductos');
    
  
     $r = new Router();
@@ -28,6 +28,7 @@
     $r->addRoute('editarCategoria/:ID', 'GET', 'ControllerCat', 'traerCategoriaModificar');
     $r->addRoute('editarCategoria', 'POST', 'ControllerCat', 'modificarCategoria');
     $r->addRoute('mostrarImagen/:ID', 'GET', 'ControllerProd', 'mostrarImg');
+    $r->addRoute('eliminarImagen/:ID', 'GET', 'ControllerProd', 'eliminarImg');
 
     //ruta por defecto
     $r->setDefaultRoute('ControllerCat', 'mostrarCategorias');

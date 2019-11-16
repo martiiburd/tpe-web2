@@ -2,7 +2,7 @@
 
 {if isset($username)}
     <div class="container">
-        <form action="editarProducto" method="POST">
+        <form action="editarProducto" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
@@ -36,6 +36,7 @@
                     {/foreach}
                 </select>
             </div>
+            <input type="file" name="imagesToUpload[]"  multiple>
             
             <button type="submit" class="btn btn-primary">Modificar</button>
 
