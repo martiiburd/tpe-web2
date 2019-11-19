@@ -34,4 +34,7 @@ class LoginController{
         $this->authHelper->logout();
         header('Location: '. LOGIN);
     }
+    public function registrarse(){
+        $this->view->verRegistro();
+    }
 }

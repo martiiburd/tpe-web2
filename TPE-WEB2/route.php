@@ -29,6 +29,8 @@
     $r->addRoute('editarCategoria', 'POST', 'ControllerCat', 'modificarCategoria');
     $r->addRoute('mostrarImagen/:ID', 'GET', 'ControllerProd', 'mostrarImg');
     $r->addRoute('eliminarImagen/:ID', 'GET', 'ControllerProd', 'eliminarImg');
+    $r->addRoute('registrar', 'GET', 'loginController', 'registrarse');
+    $r->addRoute('guardarUsuario', 'POST', 'loginController', 'guardarUsusario');
 
     //ruta por defecto
     $r->setDefaultRoute('ControllerCat', 'mostrarCategorias');

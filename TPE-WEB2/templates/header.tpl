@@ -27,6 +27,9 @@
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
         </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="registrar">Registrate</a>
+        </div>
         {/if}
         {if isset($username)}
          <div class="navbar-nav ml-auto">

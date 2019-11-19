@@ -32,7 +32,7 @@
             <div class="form-group">
                 <select name="categ" >
                     {foreach $categorias as $categoria}
-                        <option value="{$categoria->id_categoria}">{$categoria->nombre}</option>
+                        <option value="{$categoria->id_categoria}"{if ($categoria->id_categoria==$producto->id_categoria_fk)} selected {/if}>{$categoria->nombre}</option>
                     {/foreach}
                 </select>
             </div>
