@@ -88,12 +88,7 @@ class ControllerProd{
         }
         header('Location: '. INICIO);
     }
-    public function mostrarImg($params= null){
-        $id_prod= $params[':ID'];
-        $imagen=$this->modelImg->traerImgProd($id_prod);
-        $this->viewProd->mostrarFoto($imagen);
-
-    }
+    
 
     public function traerProductoModificar($params = null){
         $id_prod= $params[':ID'];
@@ -112,10 +107,6 @@ class ControllerProd{
         $imagenes=$_FILES;        
         if(isset($prod) && isset($grad) && isset($prec) && isset($categ)){  
             $this->modelProd->modificarProd($prod,$grad,$prec,$categ,$id_prod);
-            // $hayimg=$this->modelImg->traerImgProd($id_prod);
-            // if(isset ($hayimg)){
-            //     $this->modelImg->eliminarImgProd($id_prod);
-            // }
             foreach($imagenes['imagesToUpload']['tmp_name'] as $key => $tmp_name){
                 if($_FILES['imagesToUpload']['type'][$key] == "image/jpg" || $_FILES['imagesToUpload']['type'][$key] == "image/jpeg" || $_FILES['imagesToUpload']['type'][$key] == "image/png") {
                     $source=$tmp_name;
@@ -134,5 +125,14 @@ class ControllerProd{
         $id_img= $params[':ID'];
         $this->modelImg->eliminarImg($id_img);
         header("Location: " .  INICIO);
+    }
+
+    public function mostrarDetalle($params=null){
+        $id=$params[':ID'];
+        $descripcion_produto=$this->modelProd->obtenerProducto($id);
+        $categorias=$this->modelCat->obtenerCategorias();
+        $imagen=$this->modelImg->traerImgProd($id);
+        $this->viewProd->detalleProducto($descripcion_produto,$categorias,$imagen);
+        
     }
 }

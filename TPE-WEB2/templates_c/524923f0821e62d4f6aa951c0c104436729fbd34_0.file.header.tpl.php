@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-16 02:42:00
+/* Smarty version 3.1.33, created on 2019-11-20 00:42:08
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dcf53e8517755_94022524',
+  'unifunc' => 'content_5dd47dd0375d90_69954444',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '524923f0821e62d4f6aa951c0c104436729fbd34' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\header.tpl',
-      1 => 1573868517,
+      1 => 1574205360,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dcf53e8517755_94022524 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd47dd0375d90_69954444 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +51,9 @@ function content_5dcf53e8517755_94022524 (Smarty_Internal_Template $_smarty_tpl)
         <?php if (!isset($_smarty_tpl->tpl_vars['username']->value)) {?>
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="registrar">Registrate</a>
         </div>
         <?php }?>
         <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?>

@@ -17,10 +17,7 @@ class modelImg{
         $query->execute(array($id_prod));
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-    public function eliminarImgProd($id_prod){
-        $query=$this->db->prepare('DELETE FROM `imagen` WHERE id_producto_fk=?');
-        $query->execute([$id_prod]);
-    }
+    
     public function eliminarImg($id_img){
         $query=$this->db->prepare('DELETE FROM `imagen` WHERE id_img=?');
         $query->execute([$id_img]);

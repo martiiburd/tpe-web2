@@ -11,6 +11,12 @@ class modelProd{
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+    public function obtenerProducto($idProducto){
+        $query = $this->db->prepare('SELECT * FROM producto WHERE id_producto= ?');
+        $query-> execute(array($idProducto));
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
     public function verProductos(){
         $query = $this->db->prepare('SELECT * FROM producto');
         $query->execute();
@@ -41,6 +47,7 @@ class modelProd{
         $query-> execute(array($prod,$grad,$prec,$categ,$id_prod));
         
     }
+
     
 
 }

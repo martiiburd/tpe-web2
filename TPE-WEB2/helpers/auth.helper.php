@@ -21,11 +21,15 @@ class AuthHelper{
         }
     }
     public function obternerNombreUsuario(){
-       
         if (isset($_SESSION['nombre']))    
             return $_SESSION['nombre'];
         else return null;
 
     }
+    public function obternerIdUsuario(){
+        if (isset($_SESSION['id_usuario']))    
+            return $_SESSION['id_usuario'];
+        else return null;
 
+    }
 }

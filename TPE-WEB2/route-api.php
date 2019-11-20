@@ -8,8 +8,7 @@
 
     $r->addRoute("comentarios", "GET", "api_comentario_controller","obtenerComentario");
     $r->addRoute("comentarios/:ID", "DELETE", "api_comentario_controller", "eliminarComentario");
-    $r->addRoute();
-    // echo ("hola");
+    $r->addRoute("comentarios","POST", "api_comentario_controller","agregarComentario");
 
 
     $r->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

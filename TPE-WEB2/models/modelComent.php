@@ -22,4 +22,12 @@ class modelComent{
         $query=$this->db->prepare('DELETE FROM comentario WHERE id_comentario=?');
         $query->execute(array($id));
     }
+
+    public function guardarComentario($comentario,$puntaje,$id_prod,$id_usuario){
+        $query=$this->db->prepare('INSERT INTO comentario(comentario, puntaje, id_prod_fk, id_usuario_fk) VALUES(?,?,?,?)');
+        $query->execute([$comentario,$puntaje,$id_prod,$id_usuario]);
+        return $this->db->lastInsertId();
+        //
+    }
+
 }

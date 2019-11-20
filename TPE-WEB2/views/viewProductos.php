@@ -10,6 +10,7 @@
             $this->smarty->assign('titulo', 'Productos');
             $this->smarty->assign('basehref', BASE_URL);
             $this->smarty->assign('username', $authHelper->obternerNombreUsuario());
+            $this->smarty->assign('userid', $authHelper->obternerIdUsuario());
         }
         
         public function mostrarProductos($productos, $categorias){
@@ -48,8 +49,11 @@
             $this->smarty->display('templates/viewAgregarP.tpl');
 
         }
-        public function mostrarFoto($imagenes){
+        public function detalleProducto($descripcion_produto,$categorias,$imagenes){
+            $this->smarty->assign('producto', $descripcion_produto);
+            $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('imagenes', $imagenes);
-            $this->smarty->display('templates/viewImagen.tpl');
+            $this->smarty->display('templates/viewDetalleProd.tpl');
+
         }
     }

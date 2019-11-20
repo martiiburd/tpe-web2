@@ -1,6 +1,6 @@
 <?php
 
-class json_view {
+class JSONView {
 
     /**
      * Responde cualquier coleccion de objetos en formato JSON.
