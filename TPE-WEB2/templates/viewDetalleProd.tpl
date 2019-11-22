@@ -12,8 +12,9 @@
         {else !$imagenes}
             <h1>No hay imagen de este producto</h1>
     {/if}
-    <ul id="comentarios">
-    </ul>
+    <div id="comentarios" class="col-md-6">
+        {include 'vue/comentarios.tpl'}
+    </div> 
     <form>
         <div class="row">
             <div class="col-9">
@@ -25,7 +26,13 @@
         </div>
         <div class="form-group">
             <label>Puntaje del producto</label>
-            <input type= "number" class="puntaje form-control">
+            <select class="puntaje" >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
         </div>
         <div class="form-group">
             <select class="producto" >

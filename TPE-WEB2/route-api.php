@@ -6,7 +6,7 @@
 
     $r = new Router();
 
-    $r->addRoute("comentarios", "GET", "api_comentario_controller","obtenerComentario");
+    $r->addRoute("comentarios", "GET", "api_comentario_controller","obtenerComentarios");
     $r->addRoute("comentarios/:ID", "DELETE", "api_comentario_controller", "eliminarComentario");
     $r->addRoute("comentarios","POST", "api_comentario_controller","agregarComentario");
 

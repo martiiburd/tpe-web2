@@ -1,6 +1,7 @@
 <?php
     require_once("./models/modelComent.php"); 
     require_once("./api/json_view.php"); 
+    
 
 class api_comentario_controller{
     private $model;
@@ -17,7 +18,7 @@ class api_comentario_controller{
         return json_decode($this->data);
     }
 
-    public function obtenerComentario($params = null){
+    public function obtenerComentarios($params = null){
         $id = $_GET['id_prod_fk'];//api/comentarios?id_prod_fk=5
         $comentarios= $this->model->traerComentarios($id);
         $this->view->response($comentarios, 200);
