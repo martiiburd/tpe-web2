@@ -25,6 +25,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="ofertas">Ofertas</a>
         </div>
+        
         {if !isset($username)}
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
@@ -34,6 +35,9 @@
         </div>
         {/if}
         {if isset($username)}
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
+        </div>
          <div class="navbar-nav ml-auto">
             <span class="navbar-text">{$username}</span>
             <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>

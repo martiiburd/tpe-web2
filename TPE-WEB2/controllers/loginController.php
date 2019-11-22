@@ -37,4 +37,31 @@ class LoginController{
     public function registrarse(){
         $this->view->verRegistro();
     }
+
+    public function saveUsuario(){
+        $nombre=$_POST['nombre'];
+        $apellido=$_POST['apellido'];
+        $email=$_POST['email'];
+        $contrasena=$_POST['contrasena'];
+        if(isset($email) && isset($contrasena)){
+            $hash=password_hash($contrasena, PASSWORD_DEFAULT);
+            $this->model->guardarUsu($email, $hash, $nombre, $apellido);
+            header('Location: ' . INICIO);
+        }
+    }
+
+    public function mostrarUsuarios(){
+        $this->authHelper->chequearUsuarioRegistrado();
+        $usuarios=$this->model->traerUsuarios();
+        $this->view->verUsuarios($usuarios);
+    }
+    public function borrarUsuario($params=null){
+        $id= $params[':ID'];
+        $this->model->eliminarUsu($id);
+        header('Location: ' . INICIO);
+    }
+    public function cambiarComoAdmin($params=null){
+        $id= $params[':ID'];
+        $this->model->modificarUsuario($id);
+    }
 }

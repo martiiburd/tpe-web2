@@ -62,6 +62,7 @@ class ControllerProd{
     public function eliminarProducto($params = null){
         $this->authHelper->chequearUsuarioRegistrado(); //barrera   
         $id = $params[':ID'];
+        var_dump($id);
         $this->modelProd->eliminarProd($id);
         header("Location: " . INICIO);  
     }

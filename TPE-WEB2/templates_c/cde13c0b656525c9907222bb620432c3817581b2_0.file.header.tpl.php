@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 19:49:09
+/* Smarty version 3.1.33, created on 2019-11-22 23:30:55
   from 'C:\xampp\htdocs\TPE-WEB2\tpe-web2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd4392530c8b6_59180182',
+  'unifunc' => 'content_5dd8619fbc24b6_18506121',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cde13c0b656525c9907222bb620432c3817581b2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE-WEB2\\tpe-web2\\templates\\header.tpl',
-      1 => 1574187980,
+      1 => 1574461845,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd4392530c8b6_59180182 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd8619fbc24b6_18506121 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +31,10 @@ function content_5dd4392530c8b6_59180182 (Smarty_Internal_Template $_smarty_tpl)
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
+    <!-- development version, includes helpful console warnings -->
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><?php echo '</script'; ?>
+>
     <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
 </title>
 </head>
@@ -48,6 +52,7 @@ function content_5dd4392530c8b6_59180182 (Smarty_Internal_Template $_smarty_tpl)
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="ofertas">Ofertas</a>
         </div>
+        
         <?php if (!isset($_smarty_tpl->tpl_vars['username']->value)) {?>
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">Iniciar Sesion</a>
@@ -57,6 +62,9 @@ function content_5dd4392530c8b6_59180182 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <?php }?>
         <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
+        </div>
          <div class="navbar-nav ml-auto">
             <span class="navbar-text"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </span>
