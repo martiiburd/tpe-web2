@@ -13,8 +13,9 @@
 
         <ul v-if="!loading" class="list-group list-group-flush">
             <a v-for="comentario in comentarios" class="list-group-item list-group-item-action"> 
-                {{ comentario.comentario }}
-                {{comentario.puntaje}}
+                {{comentario.comentario}}
+                <h6>Puntaje:</h6>{{comentario.puntaje}}
+                <h6>Usuario:</h6>{{comentario.nombre}}
                 <button type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
             </a>
 

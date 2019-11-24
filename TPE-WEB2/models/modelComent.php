@@ -8,7 +8,7 @@ class modelComent{
     }
 
     public function traerComentarios($id){
-        $query=$this->db->prepare('SELECT * FROM `comentario` WHERE `id_prod_fk`=?');
+        $query=$this->db->prepare('SELECT comentario.comentario, comentario.puntaje, usuario.nombre FROM comentario JOIN usuario ON comentario.id_usuario_fk=usuario.id_usuario WHERE id_prod_fk=?');
         $query->execute(array($id));
         return $query->fetchAll(PDO::FETCH_OBJ); 
     }
