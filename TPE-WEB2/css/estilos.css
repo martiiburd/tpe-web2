@@ -10,3 +10,15 @@
     width: 10% !important;
     height: 10% !important;
 }
+
+.tablaUsuario, tr, td{
+    margin: 30px;
+    border: 1px solid grey;
+    text-align: center;
+    background-color: gainsboro;
+}
+th{
+    border: 1px solid grey;
+    text-align: center;
+    background-color: silver;
+}

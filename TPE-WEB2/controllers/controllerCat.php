@@ -28,27 +28,33 @@ class ControllerCat{
     }
 
     public function eliminarCategoria($params = null){
-        $this->authHelper->chequearUsuarioRegistrado(); //barrera   
-        $id = $params[':ID'];
-        $productos=$this->modelProd->obtenerProductos($id); 
-        if($productos){
-            $this->viewCat->error("Para eliminar la categoria deseada se deben borrar los productos que hay en ella");
-        }
-        else{
-            $this->modelCat->eliminarCat($id); 
-            header("Location: " . INICIO);    
+        $this->authHelper->chequearUsuarioRegistrado(); //barrera 
+        $tipo=$this->authHelper->obtenerTipoUsuario();
+        if($tipo=="1"){  
+            $id = $params[':ID'];
+            $productos=$this->modelProd->obtenerProductos($id); 
+            if($productos){
+                $this->viewCat->error("Para eliminar la categoria deseada se deben borrar los productos que hay en ella");
+            }
+            else{
+                $this->modelCat->eliminarCat($id); 
+                header("Location: " . INICIO);    
+            }
         }
     }
     public function agregarCategoria(){
         $this->authHelper->chequearUsuarioRegistrado(); //barrera
-        $nombre = $_POST['nombre'];
-        $descripcion=$_POST['descripcion'];
-        if(isset($nombre) && isset($descripcion)){ 
-            $this->modelCat->guardarCat($nombre, $descripcion);
-            header('Location: ' . INICIO);
-        }
-        else{
-            $this->viewCat->error("Faltan datos obligatorios");
+        $tipo=$this->authHelper->obtenerTipoUsuario();
+        if($tipo=="1"){
+            $nombre = $_POST['nombre'];
+            $descripcion=$_POST['descripcion'];
+            if(isset($nombre) && isset($descripcion)){ 
+                $this->modelCat->guardarCat($nombre, $descripcion);
+                header('Location: ' . INICIO);
+            }
+            else{
+                $this->viewCat->error("Faltan datos obligatorios");
+            }
         }
     }
     public function traerCategoriaModificar($params = null){
@@ -58,17 +64,18 @@ class ControllerCat{
     }
     public function modificarCategoria(){
         $this->authHelper->chequearUsuarioRegistrado(); //barrera
-        $id_cat=$_POST['id_cat'];
-        $nomb = $_POST['nomb'];
-        $descri=$_POST['descri'];
-        
-        
-        if(isset($nomb) && isset($descri)){
-            $this->modelCat->modificarCat($nomb,$descri,$id_cat);
-            header("Location: " .  INICIO);
-        }
-        else {
-            $this->viewCat->error("Faltan datos obligatorios");
+        $tipo=$this->authHelper->obtenerTipoUsuario();
+        if($tipo=="1"){
+            $id_cat=$_POST['id_cat'];
+            $nomb = $_POST['nomb'];
+            $descri=$_POST['descri'];
+            if(isset($nomb) && isset($descri)){
+                $this->modelCat->modificarCat($nomb,$descri,$id_cat);
+                header("Location: " .  INICIO);
+            }
+            else {
+                $this->viewCat->error("Faltan datos obligatorios");
+            }
         }
 
     }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-24 04:06:21
+/* Smarty version 3.1.33, created on 2019-11-25 14:38:38
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd9f3addbcee3_00025729',
+  'unifunc' => 'content_5ddbd95e81d9c0_01248493',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '785e44fbdade7cf9631401a2b36cebf1dcdce1c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\footer.tpl',
-      1 => 1574564775,
+      1 => 1574687709,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd9f3addbcee3_00025729 (Smarty_Internal_Template $_smarty_tpl) {
-?>    <img src="img/codigo/qr_img.png">
-    <?php echo '<script'; ?>
+function content_5ddbd95e81d9c0_01248493 (Smarty_Internal_Template $_smarty_tpl) {
+?>    <?php echo '<script'; ?>
  src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
@@ -32,5 +31,5 @@ function content_5dd9f3addbcee3_00025729 (Smarty_Internal_Template $_smarty_tpl)
  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"><?php echo '</script'; ?>
 >
     </body>  
-</html><?php }
+</html> <?php }
 }

@@ -1,23 +1,33 @@
 {include file='header.tpl'}
-{if isset($username)} 
-    
-    <ul>
+{if isset($username)}
+    <h2>Usuarios-Administradores</h2>
+    <table class="tablaUsuario col-md-10" >
+        <tr>
+            <th>Mail</th>
+            <th>Tipo de Usuario</th>
+            <th>Eliminar</th>        
+        </tr>
         {foreach $usuarios as $usuario}
-                <li> {$usuario->nombre} {$usuario->usuario_admin} </li>
-                <a href="eliminarUsuario/{$usuario->id_usuario}">Eliminar</a>
-                
-                <form action="agregarComoAdmin/{$usuario->id_usuario}">
-                    
-                    <select name="">
+            <tr>
+                <td>
+                    {$usuario->nombre} {$usuario->usuario_admin}
+                </td> 
+                <td>
+                    <form action="agregarComoAdmin/{$usuario->id_usuario}" method="POST">
+                        <select name="elegirAdmin">
                         <option value="0">Usuario</option>
                         <option value="1">Administrador</option>
-                        
+    
                     </select>
-                    
-                    <button type="submit" href="agregarComoAdmin/{$usuario->id_usuario}">Administrador</button>
-                </form>
+                    <button type="submit">Cambiar</button>
+                    </form>
+                </td>                
+                <td>
+                    <a href="eliminarUsuario/{$usuario->id_usuario}">Eliminar</a>
+                </td>
+            </tr>
         {/foreach}
-    </ul>
+    </table>
                             
 {/if}
 

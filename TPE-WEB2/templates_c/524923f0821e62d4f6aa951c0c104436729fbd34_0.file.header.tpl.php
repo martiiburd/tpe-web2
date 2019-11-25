@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-24 00:37:24
+/* Smarty version 3.1.33, created on 2019-11-25 22:54:29
   from 'C:\xampp\htdocs\tpe-web2\TPE-WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd9c2b4d7ac88_57171774',
+  'unifunc' => 'content_5ddc4d95c48482_69372368',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '524923f0821e62d4f6aa951c0c104436729fbd34' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tpe-web2\\TPE-WEB2\\templates\\header.tpl',
-      1 => 1574552242,
+      1 => 1574718865,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd9c2b4d7ac88_57171774 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ddc4d95c48482_69372368 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,14 +62,16 @@ function content_5dd9c2b4d7ac88_57171774 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <?php }?>
         <?php if (isset($_smarty_tpl->tpl_vars['username']->value)) {?>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
-        </div>
-         <div class="navbar-nav ml-auto">
-            <span class="navbar-text"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
+            <?php if (($_smarty_tpl->tpl_vars['tipoUsuario']->value == "1")) {?>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
+                </div>
+            <?php }?>
+            <div class="navbar-nav ml-auto">
+                <span class="navbar-text"><?php echo $_smarty_tpl->tpl_vars['username']->value;?>
 </span>
-            <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
-        </div>
+                <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
+            </div>
         <?php }?>
     </div>
     </nav><?php }

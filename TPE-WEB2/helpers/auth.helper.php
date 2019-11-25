@@ -10,6 +10,7 @@ class AuthHelper{
     public function login($usuario){
         $_SESSION['id_usuario']=$usuario->id_usuario;
         $_SESSION['nombre']=$usuario->nombre;
+        $_SESSION['usuario_admin']=$usuario->usuario_admin;
     }  
     public function logout(){
         session_destroy();
@@ -29,6 +30,12 @@ class AuthHelper{
     public function obternerIdUsuario(){
         if (isset($_SESSION['id_usuario']))    
             return $_SESSION['id_usuario'];
+        else return null;
+
+    }
+    public function obtenerTipoUsuario(){
+        if (isset($_SESSION['usuario_admin']))    
+            return $_SESSION['usuario_admin'];
         else return null;
 
     }

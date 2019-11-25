@@ -49,9 +49,9 @@ class LoginController{
             header('Location: ' . INICIO);
         }
     }
-
     public function mostrarUsuarios(){
         $this->authHelper->chequearUsuarioRegistrado();
+        
         $usuarios=$this->model->traerUsuarios();
         $this->view->verUsuarios($usuarios);
     }
@@ -62,6 +62,8 @@ class LoginController{
     }
     public function cambiarComoAdmin($params=null){
         $id= $params[':ID'];
-        $this->model->modificarUsuario($id);
+        $valor=$_POST['elegirAdmin'];
+        $this->model->modificarUsuario($id,$valor);
+        header("Location: " . INICIO);
     }
 }

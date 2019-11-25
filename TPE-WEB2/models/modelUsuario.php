@@ -25,8 +25,11 @@ class ModelUsuario{
     public function eliminarUsu($id){
         $query=$this->db->prepare('DELETE FROM usuario WHERE id_usuario=?');
         $query->execute([$id]);
+        
     }
-    public function modificarAdmin($id){
-        $query=$this->db->prepare('UPDATE usuario SET usuario_admin=?');   
+    public function modificarUsuario($id,$valor){
+        $query=$this->db->prepare('UPDATE usuario SET usuario_admin=? WHERE id_usuario=?'); 
+        $query->execute([$valor,$id]);
+
     }
 }

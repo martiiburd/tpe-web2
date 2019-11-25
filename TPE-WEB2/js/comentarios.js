@@ -6,6 +6,7 @@ let app = new Vue({
         titulo: "Comentarios del producto",
         loading: false,
         comentarios: [],
+
     },
     methods: {
         eliminar: function(event, id_coment) {
@@ -30,6 +31,7 @@ function traerComentario() {
     .then(comentarios => {
         app.comentarios=comentarios;
         app.loading = false;
+        console.log(comentarios);
     })
     .catch(error => console.log(error));
 }

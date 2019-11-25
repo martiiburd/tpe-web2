@@ -6,7 +6,9 @@
         {foreach $imagenes as $imagen}
             <div>
                 <img id="imagen" src="{$imagen->ruta_img}">
-                <a href="eliminarImagen/{$imagen->id_img}">Eliminar</a>
+                {if ($tipoUsuario=="1")}
+                    <a href="eliminarImagen/{$imagen->id_img}">Eliminar</a>
+                {/if}
             </div>
         {/foreach}
         {else !$imagenes}

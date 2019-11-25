@@ -11,6 +11,7 @@
             $this->smarty->assign('titulo', 'Categorías');
             $this->smarty->assign('basehref', BASE_URL);
             $this->smarty->assign('username', $authHelper->obternerNombreUsuario());
+            $this->smarty->assign('tipoUsuario', $authHelper->obtenerTipoUsuario());
         }
         
         public function mostrarCategorias($categorias){

@@ -35,13 +35,15 @@
         </div>
         {/if}
         {if isset($username)}
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
-        </div>
-         <div class="navbar-nav ml-auto">
-            <span class="navbar-text">{$username}</span>
-            <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
-        </div>
+            {if ($tipoUsuario=="1")}
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="verListaUsuarios">Usuarios</a>
+                </div>
+            {/if}
+            <div class="navbar-nav ml-auto">
+                <span class="navbar-text">{$username}</span>
+                <a class="nav-item nav-link" href="logout">Cerrar Sesion</a>
+            </div>
         {/if}
     </div>
     </nav>
