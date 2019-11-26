@@ -9,6 +9,16 @@
         <div v-if="loading" class="card-body">
             Cargando...
         </div>
+<<<<<<< HEAD
+=======
+        <ul v-if="!loading" class="list-group list-group-flush">
+            <a v-for="comentario in comentarios" class="list-group-item list-group-item-action"> 
+                {{comentario.comentario}}
+                <h6>Puntaje:</h6>{{comentario.puntaje}}
+                <h6>Usuario:</h6>{{comentario.nombre}}
+                <button v-if="admin==='1'" type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
+            </a>
+>>>>>>> origin
 
         <ul v-if="!loading" class="list-group list-group-flush">
             <li>

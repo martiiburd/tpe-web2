@@ -16,6 +16,7 @@ class ModelUsuario{
     public function guardarUsu($email, $hash, $nombre, $apellido){
         $query=$this->db->prepare('INSERT INTO usuario (nombre,contrasena,nombre_u, apellido_u) VALUES(?,?,?,?)');
         $query->execute(array($email, $hash, $nombre, $apellido));
+        return $this->db->lastInsertId();
     }
     public function traerUsuarios(){
         $query=$this->db->prepare('SELECT * FROM usuario');
@@ -31,5 +32,10 @@ class ModelUsuario{
         $query=$this->db->prepare('UPDATE usuario SET usuario_admin=? WHERE id_usuario=?'); 
         $query->execute([$valor,$id]);
 
+    }
+    public function traerUsuario($id){
+        $query=$this->db->prepare('SELECT * FROM usuario WHERE id_usuario=?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 }

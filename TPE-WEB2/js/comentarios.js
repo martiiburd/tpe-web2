@@ -1,12 +1,12 @@
 "use strict";
-
+let tipoU = document.querySelector("#tipo-usu").value;
 let app = new Vue({
     el: "#vue-comentarios",
     data: {
         titulo: "Comentarios del producto",
         loading: false,
         comentarios: [],
-
+        admin:tipoU, 
     },
     methods: {
         eliminar: function(event, id_coment) {
@@ -22,7 +22,6 @@ let app = new Vue({
         }
     }
 });
-
 function traerComentario() {
     app.loading = true;
     let id_prod=document.querySelector("#id-prod").value;
@@ -31,6 +30,7 @@ function traerComentario() {
     .then(comentarios => {
         app.comentarios=comentarios;
         app.loading = false;
+        console.log(comentarios[0]);
     })
     .catch(error => console.log(error));
 }

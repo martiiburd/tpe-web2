@@ -1,6 +1,7 @@
 {include file='header.tpl'}
-{if isset($username)}
+
     <input id="id-prod"  type="hidden" class="form-control" value="{$producto->id_producto}">
+    <input id="tipo-usu" type="hidden" class="form-control" value="{$tipoUsuario}">
     <h3>{$producto->producto}</h3> Precio: ${$producto->precio} Graduacion: {$producto->graduacion}%
     {if $imagenes}
         {foreach $imagenes as $imagen}
@@ -17,6 +18,7 @@
     <div id="comentarios" class="col-md-6">
         {include 'vue/comentarios.tpl'}
     </div> 
+{if isset($username)}
     <form>
         <div class="row">
             <div class="col-9">

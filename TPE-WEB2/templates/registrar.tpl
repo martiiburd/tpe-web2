@@ -15,7 +15,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Contraseña</label>
-            <input type="password" name="contrasena" class="form-control" placeholder="cotraseña">
+            <input type="password" name="contrasena" class="form-control" placeholder="contraseña">
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Registrar</button>
