@@ -31,7 +31,6 @@ function traerComentario() {
     .then(comentarios => {
         app.comentarios=comentarios;
         app.loading = false;
-        console.log(comentarios);
     })
     .catch(error => console.log(error));
 }

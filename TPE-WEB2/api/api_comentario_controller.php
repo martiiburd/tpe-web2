@@ -27,7 +27,7 @@ class api_comentario_controller{
     public function eliminarComentario($params = null){
         $id=$params[':ID'];
         $comentario=$this->model->traerComentario($id);
-        var_dump($id);die;
+        
         if($comentario){
             $this->model->eliminarComent($id);
             $this->view->response("el comentario fue eliminado con exito", 200);

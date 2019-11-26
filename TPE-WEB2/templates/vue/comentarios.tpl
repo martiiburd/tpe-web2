@@ -9,14 +9,17 @@
         <div v-if="loading" class="card-body">
             Cargando...
         </div>
-        <ul v-if="!loading" class="list-group list-group-flush">
-            <a v-for="comentario in comentarios" class="list-group-item list-group-item-action"> 
-                {{comentario.comentario}}
-                <h6>Puntaje:</h6>{{comentario.puntaje}}
-                <h6>Usuario:</h6>{{comentario.nombre}}
-                <button type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
-            </a>
 
+        <ul v-if="!loading" class="list-group list-group-flush">
+            <li>
+                <a v-for="comentario in comentarios" class="list-group-item list-group-item-action">
+                    {{comentario.comentario}}
+                    <h6>Puntaje:</h6>{{comentario.puntaje}}
+                    <h6>Usuario:</h6>{{comentario.nombre}}
+                    <h6>ID:</h6>{{comentario.id_comentario}}
+                    <button type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
+                </a>
+            </li>
         </ul>
 
         <div class="card-footer text-muted">
