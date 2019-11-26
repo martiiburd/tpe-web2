@@ -14,7 +14,7 @@
                 {{comentario.comentario}}
                 <h6>Puntaje:</h6>{{comentario.puntaje}}
                 <h6>Usuario:</h6>{{comentario.nombre}}
-                <button type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
+                <button v-if="admin==='1'" type="button" v-on:click="(event)=>{eliminar(event,comentario.id_comentario)}">Eliminar</button>
             </a>
 
         </ul>

@@ -15,8 +15,8 @@
                 <td>
                     <form action="agregarComoAdmin/{$usuario->id_usuario}" method="POST">
                         <select name="elegirAdmin">
-                        <option value="0">Usuario</option>
-                        <option value="1">Administrador</option>
+                            <option value="0" {if ($usuario->usuario_admin=="0")}selected{/if}>Usuario</option>
+                            <option value="1" {if ($usuario->usuario_admin=="1")}selected{/if}>Administrador</option>
     
                     </select>
                     <button type="submit">Cambiar</button>
