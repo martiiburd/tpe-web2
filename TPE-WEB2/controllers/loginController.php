@@ -45,7 +45,6 @@ class LoginController{
         $contrasena=$_POST['contrasena'];
         if(isset($email) && isset($contrasena)){
             $hash=password_hash($contrasena, PASSWORD_DEFAULT);
-            $this->model->guardarUsu($email, $hash, $nombre, $apellido);
             $id_usuario=$this->model->guardarUsu($email, $hash, $nombre, $apellido);
             $usuario=$this->model->traerUsuario($id_usuario);
             $this->authHelper->login($usuario);
