@@ -29,5 +29,11 @@ class modelComent{
         return $this->db->lastInsertId();
         //
     }
+    public function traerPromedio($id){
+        $query= $this->db->prepare('SELECT AVG (puntaje) as prom FROM comentario WHERE id_prod_fk=?');
+        $query->execute([$id]);
+        // var_dump($query); die;
+        return  $query->fetch(PDO::FETCH_OBJ); 
+    }
 
 }

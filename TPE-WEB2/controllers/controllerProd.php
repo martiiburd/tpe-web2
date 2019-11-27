@@ -4,6 +4,7 @@ include_once('models/modelProd.php');
 include_once('helpers/auth.helper.php');
 include_once('models/modelImg.php');
 include_once('views/viewProductos.php');
+include_once('models/modelComent.php');
 
 class ControllerProd{
     private $modelCat;
@@ -11,6 +12,7 @@ class ControllerProd{
     private $modelImg;
     private $viewProd;
     private $authHelper;
+    private $modelComentario;
     
 
     public function __construct(){              //constructores 
@@ -19,6 +21,7 @@ class ControllerProd{
         $this->viewProd = new viewProductos();
         $this->authHelper = new AuthHelper();
         $this->modelImg= new modelImg();
+        $this->modelComentario= new  modelComent();
        
     }
 
@@ -144,10 +147,12 @@ class ControllerProd{
 
     public function mostrarDetalle($params=null){
         $id=$params[':ID'];
-        $descripcion_produto=$this->modelProd->obtenerProducto($id);
+        $descripcion_producto=$this->modelProd->obtenerProducto($id);
         $categorias=$this->modelCat->obtenerCategorias();
         $imagen=$this->modelImg->traerImgProd($id);
-        $this->viewProd->detalleProducto($descripcion_produto,$categorias,$imagen);
+        $promedio=$this->modelComentario->traerPromedio($id);
+        // var_dump($promedio->prom);die;
+        $this->viewProd->detalleProducto($descripcion_producto, $categorias, $imagen, $promedio);
         
     }
 }

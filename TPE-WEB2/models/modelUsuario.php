@@ -38,4 +38,10 @@ class ModelUsuario{
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+    public function perfilUsuario($id){
+        $query=$this->db->prepare('SELECT nombre, nombre_u, apellido_u FROM usuario WHERE id_usuario=?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+
+    }
 }

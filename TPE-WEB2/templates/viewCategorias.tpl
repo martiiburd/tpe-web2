@@ -1,4 +1,4 @@
-{include file='header.tpl'}
+{include file='templates/header.tpl'}
 <h1>Categorias:</h1>
 {foreach $categorias as $categoria}
     <h4>{$categoria->nombre}</h4><a href="productos/{$categoria->id_categoria}">Ver Productos</a> 
@@ -37,4 +37,4 @@
         </div>
     {/if}
 {/if}
-{include file='footer.tpl'}
+{include file='templates/footer.tpl'}

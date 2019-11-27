@@ -70,7 +70,10 @@ class LoginController{
         $this->model->modificarUsuario($id,$valor);
         header("Location: " . INICIO);
     }
-    public function  perfil_usuario(){
+    public function perfil_usuario($params=null){
+        $id= $params[':ID'];
+        $usuario=$this->model->perfilUsuario($id);
+        $this->view->verPerfilUsuario($usuario);
         
     }
 }

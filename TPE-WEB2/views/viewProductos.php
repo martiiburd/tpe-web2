@@ -50,10 +50,11 @@
             $this->smarty->display('templates/viewAgregarP.tpl');
 
         }
-        public function detalleProducto($descripcion_produto,$categorias,$imagenes){
+        public function detalleProducto($descripcion_produto,$categorias,$imagenes,$promedio){
             $this->smarty->assign('producto', $descripcion_produto);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('imagenes', $imagenes);
+            $this->smarty->assign('promedio', $promedio);
             $this->smarty->display('templates/viewDetalleProd.tpl');
 
         }

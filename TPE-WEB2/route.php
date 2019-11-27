@@ -36,7 +36,6 @@
     $r->addRoute('verListaUsuarios', 'GET', 'loginController', 'mostrarUsuarios');
     $r->addRoute('eliminarUsuario/:ID', 'GET','loginController', 'borrarUsuario');
     $r->addRoute('agregarComoAdmin/:ID', 'POST', 'loginController', 'cambiarComoAdmin');
-
     $r->addRoute('perfilUsuario/:ID', 'GET','loginController', 'perfil_usuario');
 
     //ruta por defecto
