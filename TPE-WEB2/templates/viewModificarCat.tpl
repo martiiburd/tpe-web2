@@ -1,7 +1,9 @@
 {include file='header.tpl'}
+<div class="productos">
 {if ($tipoUsuario=="1")}
     {if isset($username)}
         <div class="container">
+            <h2>Modificar Categoria: </h2> <h4>"{$categoria->nombre}"</h4>
             <form action="editarCategoria" method="POST">
                 <div class="row">
                     <div class="col-9">
@@ -34,4 +36,5 @@
         </div>
     {/if}
 {/if}
+</div>
 {include file='footer.tpl'}

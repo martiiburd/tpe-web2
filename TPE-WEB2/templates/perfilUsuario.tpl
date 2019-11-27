@@ -11,7 +11,7 @@
             <td>{$usuario->apellido_u}</td>
         </tr>
         <tr>
-            <th class="perfilUsuario">Mail:</th>
+            <th class="perfilUsuario">E-mail:</th>
             <td>{$usuario->nombre}</td>
         </tr>
     </table>

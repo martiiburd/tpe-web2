@@ -28,8 +28,7 @@
                     </td>
                 </tr>
             {/foreach}
-        </table>
-                                
+        </table>                       
     {/if}
 <div>
 {include file='footer.tpl'}
